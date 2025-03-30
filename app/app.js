@@ -39,6 +39,7 @@ app.get("/hello/:name", function(req, res) {
 app.get("/Tips-formatted", function(req, res){
     var sql = 'select * from Tips_Table';
     db.query(sql).then(results => {
+        console.log(results)
         db.query(sql).then(results => {
         res.render('index', {data:results});
         });
