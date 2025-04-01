@@ -11,9 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "express": "^4.21.2",
     "mysql": "^2.18.1",
+<<<<<<< HEAD
     "mysql2": "^2.3.0",
+=======
+    "mysql2": "^2.3.3",
+>>>>>>> 42126efcbd8d09a0a783677bb4733d0d596e7b79
     "pug": "^3.0.3",
     "sqlite3": "^5.0.2",
     "supervisor": "^0.12.0"
