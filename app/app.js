@@ -35,7 +35,27 @@ app.get("/hello/:name", function(req, res) {
 });
 */
 
-// raw data for tips table
+//raw data
+app.get("/Tips", function(req, res){
+    var sql = 'select * from Tips_Table';
+    db.query(sql).then(results => {
+        console.log(results)
+        res.json(results);
+    });
+});
+
+// testing dynamic routing
+
+app.get("/dynamic/:name", function (req, res){
+    console.log(req.params);
+    res.send("Hello" + req.params.name);
+});
+
+//Routes for application will be defined here
+
+// formatted data for tips table
+// might change it to home page
+
 app.get("/Tips-formatted", function(req, res){
     var sql = 'select * from Tips_Table';
     db.query(sql).then(results => {
@@ -46,16 +66,7 @@ app.get("/Tips-formatted", function(req, res){
     });
 });
 
-// formatted data for tips table
-app.get("/Tips", function(req, res){
-    var sql = 'select * from Tips_Table';
-    db.query(sql).then(results => {
-        console.log(results)
-        res.json(results);
-    });
-});
 
-//Routes for application will be defined here
 
 app.get("/Explorer", function(req, res){
     var sql = 'select * from games';
