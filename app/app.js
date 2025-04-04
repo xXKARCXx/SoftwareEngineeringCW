@@ -36,7 +36,7 @@ app.get("/hello/:name", function(req, res) {
 */
 
 // raw data for tips table
-app.get("/Tips-formatted", function(req, res){
+app.get("/Tips-formatted", async function(req, res){
     var sql = 'select * from Tips_Table';
     db.query(sql).then(results => {
         console.log(results)
@@ -47,7 +47,7 @@ app.get("/Tips-formatted", function(req, res){
 });
 
 // formatted data for tips table
-app.get("/Tips", function(req, res){
+app.get("/Tips", async function(req, res){
     var sql = 'select * from Tips_Table';
     db.query(sql).then(results => {
         console.log(results)
