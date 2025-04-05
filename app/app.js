@@ -36,9 +36,10 @@ app.get("/hello/:name", function(req, res) {
 */
 
 // raw data for tips table
-app.get("/Tips-formatted", function(req, res){
+app.get("/Tips-formatted", async function(req, res){
     var sql = 'select * from Tips_Table';
     db.query(sql).then(results => {
+        console.log(results)
         db.query(sql).then(results => {
         res.render('index', {data:results});
         });
@@ -46,7 +47,7 @@ app.get("/Tips-formatted", function(req, res){
 });
 
 // formatted data for tips table
-app.get("/Tips", function(req, res){
+app.get("/Tips", async function(req, res){
     var sql = 'select * from Tips_Table';
     db.query(sql).then(results => {
         console.log(results)
@@ -56,6 +57,13 @@ app.get("/Tips", function(req, res){
 
 //Routes for application will be defined here
 
+
+// MY feed page for user that show favourited tips and tips related to games they are playing.
+
+app.get("/MyFeed", async function (req, res){})
+
+//list tips and search through them.
+
 app.get("/Explorer", function(req, res){
     var sql = 'select * from games';
     db.query(sql).then (results => {
@@ -64,6 +72,16 @@ app.get("/Explorer", function(req, res){
     });
 });
 
+//TODO: finish adding route some that user can add input and data can be save to backend (sql database), so it can be displayed to other users.
+
+// This page is to make users post tips that can be seen by other users
+app.get("/Create-post", async function(req, res){
+
+})
+
+
+// need to change this to login/sign up page (route)
+//This page is so users can login/sign up
 app.get("/Profiles", function (req, res){
     var sql = 'SELECT * FROM user_profiles';
     db.query(sql).then (results => {
@@ -71,6 +89,8 @@ app.get("/Profiles", function (req, res){
         res.render('Userprofile', {data:results});
     });
 });
+
+
 
 // Start server on port 3000
 app.listen(3000,function(){
