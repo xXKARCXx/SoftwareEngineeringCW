@@ -41,7 +41,7 @@ app.get("/Tips-formatted", async function(req, res){
     db.query(sql).then(results => {
         console.log(results)
         db.query(sql).then(results => {
-        res.render('index', {data:results});
+        res.render('Myfeed', {data:results});
         });
     });
 });
@@ -58,7 +58,7 @@ app.get("/Tips", async function(req, res){
 //Routes for application will be defined here
 
 
-// MY feed page for user that show favourited tips and tips related to games they are playing.
+// MY feed page for user that show favorite tips and tips related to games they are playing.
 
 app.get("/MyFeed", async function (req, res){})
 
