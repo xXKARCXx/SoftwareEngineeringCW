@@ -97,3 +97,32 @@ body {
   .Explorer{
     color: #df2323;
   }
+
+  /* Login Page Styles */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 15px;
+}
