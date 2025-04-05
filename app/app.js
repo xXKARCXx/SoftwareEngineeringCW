@@ -72,6 +72,8 @@ app.get("/Explorer", function(req, res){
     });
 });
 
+//TODO: finish adding route some that user can add input and data can be save to backend (sql database), so it can be displayed to other users.
+
 // This page is to make users post tips that can be seen by other users
 app.get("/Create-post", async function(req, res){
 
