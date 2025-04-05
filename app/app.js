@@ -1,6 +1,8 @@
 // Import express.js
 const express = require("express");
 
+const session = require("express-session");
+
 // Create express app
 var app = express();
 
@@ -11,6 +13,16 @@ app.set('views', './app/views');
 // Add static files location
 app.use(express.static("static"));
 
+app.use(session({
+    secret: 'your_secret_key_here',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
+// Add form data parsing
+app.use(express.urlencoded({ extended: true }));
+
 // Get the functions in the db.js file to use
 const db = require('./services/db');
 
@@ -19,7 +31,40 @@ app.get("/", function(req, res) {
     res.send("Hello world!");
 });
 
+// Login routes
+app.get("/login", function(req, res) {
+    res.render("login", { error: null });
+});
 
+app.post("/login", function(req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    var sql = 'SELECT * FROM user_profiles WHERE username = ? AND password = ?';
+    db.query(sql, [username, password]).then(results => {
+        if (results.length > 0) {
+            req.session.user = results[0];
+            res.redirect("/MyFeed");
+        } else {
+            res.render("login", { error: "Invalid credentials" });
+        }
+    }).catch(err => {
+        console.log(err);
+        res.render("login", { error: "Login error" });
+    });
+});
+
+app.get("/logout", function(req, res) {
+    req.session.destroy();
+    res.redirect("/login");
+});
+
+// Protect routes middleware
+function checkAuth(req, res, next) {
+    if (!req.session.user) {
+        return res.redirect("/login");
+    }
+    next();
 
 
 
@@ -60,11 +105,11 @@ app.get("/Tips", async function(req, res){
 
 // MY feed page for user that show favorite tips and tips related to games they are playing.
 
-app.get("/MyFeed", async function (req, res){})
+app.get("/MyFeed", checkAuth, async function (req, res){})
 
 //list tips and search through them.
 
-app.get("/Explorer", function(req, res){
+app.get("/explorer", function(req, res){
     var sql = 'select * from games';
     db.query(sql).then (results => {
         console.log(results)
@@ -75,18 +120,18 @@ app.get("/Explorer", function(req, res){
 //TODO: finish adding route some that user can add input and data can be save to backend (sql database), so it can be displayed to other users.
 
 // This page is to make users post tips that can be seen by other users
-app.get("/Create-post", async function(req, res){
+app.get("/Create-post", checkAuth, async function(req, res){})
 
-})
+}
 
 
 // need to change this to login/sign up page (route)
 //This page is so users can login/sign up
-app.get("/Profiles", function (req, res){
+app.get("/profiles", function (req, res){
     var sql = 'SELECT * FROM user_profiles';
     db.query(sql).then (results => {
         console.log(results)
-        res.render('Userprofile', {data:results});
+        res.render('Users', {data:results});
     });
 });
 
