@@ -91,6 +91,21 @@ app.get("/Tips-formatted", async function(req, res){
     });
 });
 
+//FIXME: getting this to take user input
+app.post('/create-post', function (req, res) {
+    params = req.body;
+
+    var title = new title (params.id)
+    try{
+        title.addPostTitle(params.title).then(result => {
+            res.send('form submitted');
+        })
+    } catch (err) {
+        console.error('Error while adding note', err.message);
+    }
+
+});
+
 // formatted data for tips table
 app.get("/Tips", async function(req, res){
     var sql = 'select * from Tips_Table';
@@ -120,9 +135,12 @@ app.get("/explorer", function(req, res){
 //TODO: finish adding route some that user can add input and data can be save to backend (sql database), so it can be displayed to other users.
 
 // This page is to make users post tips that can be seen by other users
-app.get("/Create-post", checkAuth, async function(req, res){})
+app.get("/Create-post", async function(req, res){
+    console.log(results)
+    res.render('post', {data:results})
+});
 
-}
+
 
 
 // need to change this to login/sign up page (route)
@@ -141,3 +159,4 @@ app.get("/profiles", function (req, res){
 app.listen(3000,function(){
     console.log(`Server running at http://127.0.0.1:3000/`);
 });
+}
