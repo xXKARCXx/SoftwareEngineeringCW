@@ -3,15 +3,19 @@ const express = require("express");
 
 const session = require("express-session");
 
+//get the psot model
+const {Post} = require("./models/Post");
+
 // Create express app
 var app = express();
+
+// Add static files location
+app.use(express.static("static"));
 
 // Use the Pug templating engine
 app.set('view engine', 'pug');
 app.set('views', './app/views');
 
-// Add static files location
-app.use(express.static("static"));
 
 app.use(session({
     secret: 'your_secret_key_here',

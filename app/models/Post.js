@@ -1,5 +1,6 @@
 // create post: object of post
- class post{
+const db = require('../db/db.js'); 
+class post{
     id;
 
     title;
