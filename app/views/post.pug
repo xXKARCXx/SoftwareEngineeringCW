@@ -2,13 +2,18 @@ extends layout
 block content
     -console.log(data)
     .main-content
-    h1 Post new tip
-    h2 Create post
-    form(action ='/create-post', method='POST')
-        input(type='hidden' name='id' value=post.id)
-        textarea(name='description' rows = 6 cols= 200)
-        div
-        input(type='submit' value='SUBMIT')
+        h1 Post new tip
+    div
+        h2 Create post
+        
+        form(action='/add-tip', method='POST')
+            h2 title 
+            textarea(name='title' rows=2 col=50)
+            div
+            h2 description 
+            textarea(name='tip' rows=6 cols=200)
+            div
+            input(type='submit' value='Submit')
 
 
 

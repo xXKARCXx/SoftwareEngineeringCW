@@ -3,8 +3,11 @@ const express = require("express");
 
 const session = require("express-session");
 
-//get the psot model
-const {Post} = require("./models/Post");
+//get the post model
+const Post = require("./models/Post");
+
+// Get the functions in the db.js file to use
+const db = require('./services/db');
 
 // Create express app
 var app = express();
@@ -27,8 +30,7 @@ app.use(session({
 // Add form data parsing
 app.use(express.urlencoded({ extended: true }));
 
-// Get the functions in the db.js file to use
-const db = require('./services/db');
+
 
 // Create a route for root - /
 app.get("/", function(req, res) {
@@ -69,7 +71,7 @@ function checkAuth(req, res, next) {
         return res.redirect("/login");
     }
     next();
-
+}
 
 
 /* Create a dynamic route for /hello/<name>, where name is any value provided by user
@@ -84,6 +86,7 @@ app.get("/hello/:name", function(req, res) {
 });
 */
 
+
 // raw data for tips table
 app.get("/Tips-formatted", async function(req, res){
     var sql = 'select * from Tips_Table';
@@ -95,20 +98,7 @@ app.get("/Tips-formatted", async function(req, res){
     });
 });
 
-//FIXME: getting this to take user input
-app.post('/create-post', function (req, res) {
-    params = req.body;
 
-    var title = new title (params.id)
-    try{
-        title.addPostTitle(params.title).then(result => {
-            res.send('form submitted');
-        })
-    } catch (err) {
-        console.error('Error while adding note', err.message);
-    }
-
-});
 
 // formatted data for tips table
 app.get("/Tips", async function(req, res){
@@ -121,10 +111,28 @@ app.get("/Tips", async function(req, res){
 
 //Routes for application will be defined here
 
+//! This is for partial working and still needs fixing 
+//! The DB still takes no input
 
-// MY feed page for user that show favorite tips and tips related to games they are playing.
+app.get("/Cpost", async function (req, res){
+    var sql = 'SELECT * FROM POST';
+    db.query(sql).then(results => {
+        console.log(results)
+        res.render('post', {data:results});
+    });
+});
 
-app.get("/MyFeed", checkAuth, async function (req, res){})
+//! send validation msg to to webpage but did not send data to terminal
+
+app.post('/add-tip', function(req, res){
+    try{
+        console.log(req.body);
+    }catch(err){
+        console.error('Error while adding tips;', err.message);
+    }
+    res.send('Tips added successfully!');
+});
+
 
 //list tips and search through them.
 
@@ -136,13 +144,6 @@ app.get("/explorer", function(req, res){
     });
 });
 
-//TODO: finish adding route some that user can add input and data can be save to backend (sql database), so it can be displayed to other users.
-
-// This page is to make users post tips that can be seen by other users
-app.get("/Create-post", async function(req, res){
-    console.log(results)
-    res.render('post', {data:results})
-});
 
 
 
@@ -163,4 +164,3 @@ app.get("/profiles", function (req, res){
 app.listen(3000,function(){
     console.log(`Server running at http://127.0.0.1:3000/`);
 });
-}

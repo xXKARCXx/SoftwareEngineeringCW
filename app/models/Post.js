@@ -1,25 +1,30 @@
 // create post: object of post
-const db = require('../db/db.js'); 
-class post{
-    id;
+/*
+const db = require('./../services/db.js'); 
 
-    title;
+class Post {
 
-    description;
+  title;
+  description;
 
-    constructor(id){
-        this.id = id;
+  constructor(id, _title, _des, created,gameID, userID){
+    this.id = id;
+    this.title = _title;
+    this.des = _des;
+    this.created = created;
+    this.gameID = gameID;
+    this.userID = userID;
+  }
 
-    }
-
-
-    async addPostTitle(title){
-        var sql = "UPDATE posts SET title = ? WHERE posts = ?"
-        const result = await db.query(sql, [title, this.id]);
-
-        this.title = title;
-        return result;
-
-    }
-
+  async addUserPost(title, description)
+  {
+    var sql = "UPDATE POST SET title = ?, description = ? WHERE id = ?";
+    const result = await db.query(sql, [title, description, this.id]);
+    this.title = title;
+    this.description = description;
+    return result;
+  }
 }
+
+module.exports = { post};
+*/
