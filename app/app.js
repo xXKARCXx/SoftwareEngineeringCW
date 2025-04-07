@@ -44,7 +44,7 @@ app.post("/login", function(req, res) {
     db.query(sql, [username, password]).then(results => {
         if (results.length > 0) {
             req.session.user = results[0];
-            res.redirect("/MyFeed");
+            res.redirect("/homepage");
         } else {
             res.render("login", { error: "Invalid credentials" });
         }
@@ -65,7 +65,7 @@ function checkAuth(req, res, next) {
         return res.redirect("/login");
     }
     next();
-
+}
 
 
 /* Create a dynamic route for /hello/<name>, where name is any value provided by user
@@ -81,15 +81,20 @@ app.get("/hello/:name", function(req, res) {
 */
 
 // raw data for tips table
-app.get("/Tips-formatted", async function(req, res){
-    var sql = 'select * from Tips_Table';
-    db.query(sql).then(results => {
-        console.log(results)
-        db.query(sql).then(results => {
-        res.render('Myfeed', {data:results});
+app.get("/homepage", checkAuth, async function(req, res){
+    try{
+        var sql = 'select * from Tips_Table';
+        const results = await db.query(sql);
+        res.render('homepage', {
+            data: results,
+            user: req.session.user // Pass user to template
         });
-    });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Database error");
+    }
 });
+
 
 // formatted data for tips table
 app.get("/Tips", async function(req, res){
@@ -100,12 +105,6 @@ app.get("/Tips", async function(req, res){
     });
 });
 
-//Routes for application will be defined here
-
-
-// MY feed page for user that show favorite tips and tips related to games they are playing.
-
-app.get("/MyFeed", checkAuth, async function (req, res){})
 
 //list tips and search through them.
 
@@ -120,9 +119,7 @@ app.get("/explorer", function(req, res){
 //TODO: finish adding route some that user can add input and data can be save to backend (sql database), so it can be displayed to other users.
 
 // This page is to make users post tips that can be seen by other users
-app.get("/Create-post", checkAuth, async function(req, res){})
-
-}
+app.get("/Create-post", checkAuth, async function(req, res){ });
 
 
 // need to change this to login/sign up page (route)
