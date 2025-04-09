@@ -12,12 +12,19 @@ const db = require('./services/db');
 // Create express app
 var app = express();
 
+// Middleware to add currentPath to all views
+app.use((req, res, next) => {
+    res.locals.currentPath = req.path;
+    next();
+  });
+
 // Add static files location
 app.use(express.static("static"));
 
 // Use the Pug templating engine
 app.set('view engine', 'pug');
 app.set('views', './app/views');
+
 
 
 app.use(session({
@@ -137,7 +144,7 @@ app.post('/add-tip', function(req, res){
 //list tips and search through them.
 
 app.get("/explorer", function(req, res){
-    var sql = 'select * from games';
+    var sql = 'select * from POST';
     db.query(sql).then (results => {
         console.log(results)
         res.render('Explorer', {data:results});

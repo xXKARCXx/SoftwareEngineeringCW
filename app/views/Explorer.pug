@@ -8,9 +8,11 @@ block content
       thead
         tr
           th Title
-          th Created
+          th Description
+          th created
       tbody
         each item in data
           tr
-            td= item.title
-            td= item.created_at
+            td= item.Title
+            td= item.Des
+            td= item.created

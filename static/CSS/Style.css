@@ -1,16 +1,39 @@
 /* General Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
     color: #333;
     background-color: #f5f5f5;
+    justify-self: center;
+    align-items: center;
     margin: 0;
-    padding: 20px;
+  }
+
+  .txtarea textarea{
+    align-items: center;
   }
   
+  .post_container{
+    padding: 0 0 60px 0;
+    align-items: center;
+    align-content: center;
+    max-width: 700px;
+    width: 100%;
+    background-color: #afafaf;
+  }
+  
+  .container {
+    align-items: center;
+    align-content:  center;
+    max-width: 700px;
+    width: 100%;
+    background-color: red;
+  }
+
+  
   .main-content {
+
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
     background: white;
     padding: 30px;
     border-radius: 8px;
@@ -95,7 +118,7 @@ body {
   } 
 
   .Explorer{
-    color: #df2323;
+    color: #000000;
   }
 
   /* Login Page Styles */
@@ -126,3 +149,102 @@ input {
   color: red;
   margin-bottom: 15px;
 }
+
+.form_gp{
+  margin: 1rem;
+}
+
+.form_butitem{}
+
+
+.form_wrapper{
+  display: flex;
+  align-content: center;
+  background-color: #2980b9;
+  padding: 2rm;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0,1);
+}
+
+.sfooter{
+  background: #333;
+  color: white;
+  padding: 6rem;
+  text-align: center;
+  width: 100%;
+  position: relative; /* Changed from fixed if not needed */
+  bottom: 0;
+  left: 0;
+}
+
+.snavb{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-radius: 10px
+}
+
+.navli_inline li{
+  display: inline-block;
+}
+
+.navli_spacing li{
+  padding: 0 20px 0 20px;
+}
+
+.center_nav nav{
+  align-items: center;
+}
+
+.postp_totitle{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 900px;
+  height: 20px;
+  border-radius: 8px;
+  background-color: #ffffff1c;
+  border-color: #ffffff73;
+}
+
+.postp_ta{
+  width: 900px;
+  height: 100px;
+  border-radius: 8px;
+  background-color: #ffffff1c;
+  border-color: #ffffff73;
+  
+}
+
+.stbutton
+{
+  align-content: center;
+  width: 200px;
+  height: 50px;
+  background-color: rgb(42, 73, 250);
+  border-radius: 14px;
+  border-color: #ffffff28;
+}
+.ivscon{
+  max-width: 1200px;
+  margin: 20px auto;
+  background: rgb(173, 14, 14);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button_div{
+  padding-left: 24rem;
+  padding-bottom: 1rem;
+}
+
+/* //- */
+
+

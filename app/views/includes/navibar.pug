@@ -1,0 +1,15 @@
+//- path = (route) // title = text
+
+//-my feed need a route
+
+- const navItems = [{path: '/login', title: 'Myfeed'}, {path: '/explorer', title: 'Explorer'},{path: '/Cpost', title: 'Create'},{path: '/login', title: 'login'}]
+
+nav.snavb
+  ul
+  .navli_inline.navli_spacing
+    each item in navItems
+      li(class=currentPath === item.path ? 'active' : '')
+        a(href=item.path)= item.title
+
+//-     a(href="/") My Site
+//- button(type="button" aria-label="Toggle navigation") ☰

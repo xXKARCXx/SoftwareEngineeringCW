@@ -1,6 +1,33 @@
-html 
-    head    
-        title Layout test
-        link(rel="stylesheet" href="/css/style.css")
-    body 
+//- .main-content 
+//-     html 
+//-         head 
+//-         nav
+//-                 div
+//-                     ul.navlist
+//-                         li
+//-                             a(href="/") Home
+//-                         li
+//-                             a(href="/Cpost") Create
+//-                         li
+//-                             a(href="/Login") Login 
+//-                         li
+//-                             a(href="/explorer") Explorer
+//-         .main-content   
+//-             title Layout test
+//-             link(rel="stylesheet" href="/css/style.css")
+//-         body 
+//-             title Layout test
+//-             block content
+
+doctype html
+html(lang="en")
+head
+    title Layout test
+    link(rel="stylesheet" href="/css/style.css")
+    include ../views/includes/header.pug
+    body.main-content
         block content
+        
+include ../views/includes/footer.pug
+
+

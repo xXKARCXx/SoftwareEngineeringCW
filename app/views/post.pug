@@ -1,19 +1,24 @@
 extends layout
+
+
 block content
     -console.log(data)
+    
     .main-content
-        h1 Post new tip
-    div
-        h2 Create post
-        
-        form(action='/add-tip', method='POST')
-            h2 title 
-            textarea(name='title' rows=2 col=50)
-            div
-            h2 description 
-            textarea(name='tip' rows=6 cols=200)
-            div
-            input(type='submit' value='Submit')
+     h1 Post new tip
+     h2 Create post
+     .form_wrapper
+            form.form_gp(action='/add-tip', method='POST')
+                h2 title 
+                textarea.postp_totitle(name='title' rows=2 col=50)
+                div
+                h2 description 
+                textarea.postp_ta(name='tip' rows=6 cols=200)
+                .inscov    
+                div.button_div
+                    input.stbutton(type='submit' value='Submit')
+
+
 
 
 
