@@ -1,18 +1,39 @@
-doctype html
-html
-  head
-    title Login
-    link(rel="stylesheet", href="/styles.css")
-  body
+extends layout
+
+block content
+  .page-content
     .login-container
       h1 Login
+
       if error
         p.error-message= error
-      form(action="/login" method="POST")
+
+      form(action="/login", method="POST")
         .form-group
           label(for="username") Username:
-          input(type="text" name="username" required)
+          input(type="text", name="username", required)
+
         .form-group
           label(for="password") Password:
-          input(type="password" name="password" required)
+          input(type="password", name="password", required)
+
         button(type="submit") Login
+
+//- doctype html
+//- html
+//-   head
+//-     title Login
+//-     link(rel="stylesheet", href="/styles.css")
+//-   body
+//-     .login-container
+//-       h1 Login
+//-       if error
+//-         p.error-message= error
+//-       form(action="/login" method="POST")
+//-         .form-group
+//-           label(for="username") Username:
+//-           input(type="text" name="username" required)
+//-         .form-group
+//-           label(for="password") Password:
+//-           input(type="password" name="password" required)
+//-         button(type="submit") Login

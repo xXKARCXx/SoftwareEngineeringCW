@@ -6,19 +6,34 @@ body {
     justify-self: center;
     align-items: center;
     margin: 0;
+    padding: 0;
+    height: 100%;
   }
+
+.flexbody {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  }
+
 
   .txtarea textarea{
     align-items: center;
   }
+
+  block content, main, .main-content,.postp-content, .login-container,.post_container  {
+    flex: 1;
+  }
   
+
   .post_container{
-    padding: 0 0 60px 0;
+    padding: 40px;
     align-items: center;
     align-content: center;
     max-width: 700px;
     width: 100%;
-    background-color: #afafaf;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(53, 53, 53, 0.193);
   }
   
   .container {
@@ -31,13 +46,19 @@ body {
 
   
   .main-content {
-
-    max-width: 1200px;
-    margin: 20px auto;
-    background: white;
-    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0px auto;
+    background: rgb(255, 255, 255);
+    padding: 0px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(155, 57, 57, 0.1);
+  }
+
+  .postpdiv {
+
   }
 
 
@@ -123,15 +144,29 @@ body {
 
   /* Login Page Styles */
 .login-container {
-  max-width: 400px;
-  margin: 50px auto;
+  min-width: 700px;
+  min-height: 700px;
+  margin: 80px auto;
+  width: 100%;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
+
+.page-content {
+  font-family: 'Segoe UI', sans-serif;
+  color: #774e4e;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 600px
+}
+
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 80px;
 }
 
 label {
@@ -151,7 +186,11 @@ input {
 }
 
 .form_gp{
-  margin: 1rem;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgb(121, 185, 180);
+  border-radius: 5px;
 }
 
 .form_butitem{}
@@ -160,7 +199,9 @@ input {
 .form_wrapper{
   display: flex;
   align-content: center;
+  margin: 0 auto;
   background-color: #2980b9;
+  width: 100%;;
   padding: 2rm;
   border-radius: 5px;
   box-shadow: 0 1px 4px rgba(0,0,0,0,1);
@@ -169,7 +210,7 @@ input {
 .sfooter{
   background: #333;
   color: white;
-  padding: 6rem;
+  padding-bottom: 6rem ;
   text-align: center;
   width: 100%;
   position: relative; /* Changed from fixed if not needed */
@@ -178,9 +219,11 @@ input {
 }
 
 .snavb{
+  margin: 0 auto;
+  align-items: center;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 90%;
   padding: 1rem 0;
   background-color: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -206,6 +249,7 @@ input {
   display: flex;
   justify-content: center;
   align-content: center;
+  max-width:650px ;
   width: 900px;
   height: 20px;
   border-radius: 8px;
@@ -214,7 +258,7 @@ input {
 }
 
 .postp_ta{
-  width: 900px;
+  max-width:650px ;
   height: 100px;
   border-radius: 8px;
   background-color: #ffffff1c;
@@ -227,8 +271,8 @@ input {
   align-content: center;
   width: 200px;
   height: 50px;
-  background-color: rgb(42, 73, 250);
-  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 9px;
   border-color: #ffffff28;
 }
 .ivscon{
@@ -241,8 +285,9 @@ input {
 }
 
 .button_div{
-  padding-left: 24rem;
-  padding-bottom: 1rem;
+  display: flex ;
+  justify-content: center;
+  padding-top: 20px;
 }
 
 /* //- */
