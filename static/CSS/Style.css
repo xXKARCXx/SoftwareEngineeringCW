@@ -149,6 +149,7 @@ body {
   margin: 80px auto;
   width: 100%;
   padding: 20px;
+  background-color: rgb(121, 185, 180);
   border: 1px solid #ddd;
   border-radius: 5px;
 }
