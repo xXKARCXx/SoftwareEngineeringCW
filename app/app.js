@@ -124,7 +124,7 @@ app.get("/game/: ", checkAuth, async function(req, res){
         console.log(results)
         res.render('game', {data:results});
     });
-}
+});
 
 //! This is for partial working and still needs fixing 
 //! The DB still takes no input
