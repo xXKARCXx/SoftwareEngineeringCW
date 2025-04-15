@@ -10,9 +10,15 @@ block content
           th Title
           th Description
           th created
+          th GAME
       tbody
         each item in data
           tr
             td= item.Title
             td= item.Des
             td= item.created
+            td
+              if item.Game_ID
+                a(href=`/game/${item.Game_ID}`)= item.Game_ID
+              else
+                span No Game ID

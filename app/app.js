@@ -118,6 +118,14 @@ app.get("/Tips", async function(req, res){
 
 //Routes for application will be defined here
 
+app.get("/game/: ", checkAuth, async function(req, res){
+    var sql = 'SELECT * FROM game';
+    db.query(sql).then(results => {
+        console.log(results)
+        res.render('game', {data:results});
+    });
+}
+
 //! This is for partial working and still needs fixing 
 //! The DB still takes no input
 
