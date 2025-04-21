@@ -44,11 +44,12 @@ app.get("/", function(req, res) {
     res.send("Hello world!");
 });
 
-// Login routes
+// GET: Displays the login page
 app.get("/login", function(req, res) {
     res.render("login", { error: null });
 });
 
+// POST: Handles the login process
 app.post("/login", function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
