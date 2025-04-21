@@ -54,7 +54,7 @@ app.post("/login", function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
 
-    var sql = 'SELECT * FROM user_profiles WHERE username = ? AND password = ?';
+    var sql = 'SELECT * FROM USER WHERE username = ? AND password = ?';
     db.query(sql, [username, password]).then(results => {
         if (results.length > 0) {
             req.session.user = results[0];
@@ -171,7 +171,7 @@ app.get("/", function(req, res){
 // need to change this to login/sign up page (route)
 //This page is so users can login/sign up
 app.get("/profiles", function (req, res){
-    var sql = 'SELECT * FROM user_profiles';
+    var sql = 'SELECT * FROM USER';
     db.query(sql).then (results => {
         console.log(results)
         res.render('Users', {data:results});
