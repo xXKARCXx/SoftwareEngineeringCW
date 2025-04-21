@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Create a route for root - /
-app.get("/", function(req, res) {
+app.get("/w", function(req, res) {
     res.send("Hello world!");
 });
 
@@ -119,13 +119,17 @@ app.get("/Tips", async function(req, res){
 
 //Routes for application will be defined here
 
-app.get("/game/: ", checkAuth, async function(req, res){
-    var sql = 'SELECT * FROM game';
-    db.query(sql).then(results => {
-        console.log(results)
-        res.render('game', {data:results});
-    });
+app.get("/game/:id", function async (req, res){
+    var Game_ID = req.params.id;
+    console.log(Game_ID);
+    res.send(Game_ID);
 });
+
+// sql = 'SELECT * FROM GAME';
+//     db.query(sql).then(results => {
+//         console.log(results)
+//         res.render('Tipforgames', {data:results});
+//     });
 
 //! This is for partial working and still needs fixing 
 //! The DB still takes no input
@@ -152,7 +156,7 @@ app.post('/add-tip', function(req, res){
 
 //list tips and search through them.
 
-app.get("/explorer", function(req, res){
+app.get("/", function(req, res){
     var sql = 'select * from POST';
     db.query(sql).then (results => {
         console.log(results)
