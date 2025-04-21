@@ -41,7 +41,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // Create a route for root - /
 app.get("/", function(req, res) {
-    res.send("Hello world!");
+    var sql = 'select * from POST';
+    db.query(sql).then (results => {
+        console.log(results)
+        res.render('Explorer', {data:results});
+    });
 });
 
 // Login routes
@@ -124,7 +128,7 @@ app.get("/game/: ", checkAuth, async function(req, res){
         console.log(results)
         res.render('game', {data:results});
     });
-}
+});
 
 //! This is for partial working and still needs fixing 
 //! The DB still takes no input
