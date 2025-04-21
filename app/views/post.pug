@@ -1,20 +1,19 @@
 extends layout
 
 block content
-    div
-    .post_container
-        h1 Post New Tip
-        h2 Create Post
+  .post_container
+    h1 Post New Tip
+    form.form_gp(action='/add-tip', method='POST')
+      h2 Title
+      textarea.postp_totitle(name='title', rows='2', cols='50' required)
 
-        .form_wrapper
-        form.form_gp(action='/add-tip', method='POST')
-            h2 Title
-            textarea.postp_totitle(name='title', rows='2', cols='50')
+      h2 Description
+      textarea.postp_ta(name='tip', rows='6', cols='50' required)
 
-            h2 Description
-            textarea.postp_ta(name='tip', rows='6', cols='200')
+      h2 Game
+      select(name='gameID')
+        option(value='1') Elden Ring
+        option(value='2') Valorant
 
-            .inscov
-
-            div.button_div
-                input.stbutton(type='submit', value='Submit')
+      div.button_div
+        input.stbutton(type='submit', value='Submit')
