@@ -11,6 +11,7 @@ block content
           th Description
           th created
           th GAME
+          th gamename
       tbody
         each item in data
           tr
@@ -22,3 +23,4 @@ block content
                 a(href=`/game/${item.Game_ID}`)= item.Game_ID
               else
                 span No Game ID
+            td= item.GameName
