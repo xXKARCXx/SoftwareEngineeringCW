@@ -1,0 +1,15 @@
+extends  layout
+block content
+   console.log(data)
+    table(border=1)
+      thead
+        tr
+          th Game
+          th Description
+          th Publish
+      tbody
+        each item in data
+          tr
+            td= item.Name 
+            td= item.Description
+            td= item.Publish

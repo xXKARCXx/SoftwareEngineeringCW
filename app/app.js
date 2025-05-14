@@ -142,13 +142,6 @@ app.get("/hello/:name", function(req, res) {
 
 //Routes for application will be defined here
 
-app.get("/game/:id", function async (req, res){
-    var Game_ID = req.params.id;  
-    var Name = GAME[Game_ID] || "Unknown Game";
-    console.log(Game_ID);
-    res.send(Game_ID);
-});
-
 // sql = 'SELECT * FROM GAME';
 //     db.query(sql).then(results => {
 //         console.log(results)
@@ -191,6 +184,16 @@ app.post('/add-tip', async function(req, res){
     }
 });
 
+
+//dynamic page for game
+app.get("/game/:id", async function(req, res){
+    var Game_ID = req.params.id;  
+    var sql = 'SELECT * FROM POST WHERE Game_ID = ?';
+    db.query(sql, [Game_ID]).then(results => {
+        console.log(results)
+        res.render('gametip', {data:results});
+    });
+});
 
 
 //Main page route
