@@ -202,7 +202,7 @@ app.get("/", async function(req, res){
     var sql = 'select * from POST';
     db.query(sql).then (results => {
         console.log(results)
-        res.render('Explorer', {data:results});
+        res.render('Explorer', {data:results}); 
     });
 });
 
