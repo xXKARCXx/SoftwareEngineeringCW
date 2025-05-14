@@ -188,6 +188,7 @@ app.post('/add-tip', async function(req, res){
 //dynamic page for game
 app.get("/game/:id", async function(req, res){
     var Game_ID = req.params.id;  
+    var sql = 'SELECT * FROM GAME WHERE Game_ID = ?';
     var sql = 'SELECT * FROM POST WHERE Game_ID = ?';
     db.query(sql, [Game_ID]).then(results => {
         console.log(results)

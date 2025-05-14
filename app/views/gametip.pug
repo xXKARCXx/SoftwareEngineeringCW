@@ -1,15 +1,16 @@
 extends  layout
 block content
    console.log(data)
+   .Expl_con
     table(border=1)
       thead
         tr
-          th Game
+          th Title
           th Description
           th Publish
       tbody
         each item in data
           tr
-            td= item.Name 
-            td= item.Description
-            td= item.Publish
+            td= item.Title
+            td= item.description
+            td= item.created
