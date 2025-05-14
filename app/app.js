@@ -198,7 +198,7 @@ app.get("/game/:id", async function(req, res){
 
 
 //Main page route
-app.get("/", function(req, res){
+app.get("/", async function(req, res){
     var sql = 'select * from POST';
     db.query(sql).then (results => {
         console.log(results)
