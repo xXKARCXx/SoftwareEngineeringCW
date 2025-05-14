@@ -7,15 +7,12 @@ block content
     table(border=1)
       thead
         tr
-          th Title
+          th Game
           th Description
           th Author
-          th Game
       tbody
         each item in data
           tr
-            td
-              a(href=`/tips/${item.id}`)= item.title
+            td= item.game || 'Unknown Game'
             td= item.description || 'No description'
             td= item.author || 'Unknown'
-            td= item.game || 'Unknown Game'
