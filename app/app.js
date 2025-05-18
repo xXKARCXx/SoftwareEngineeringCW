@@ -90,12 +90,6 @@ app.get("/MyFeed", async function(req, res) {
 app.use(express.urlencoded({ extended: true }));
 
 
-
-// Create a route for root - /
-app.get("/w", function(req, res) {
-    res.send("Hello world!");
-});
-
 // GET: Displays the login page
 app.get("/login", function(req, res) {
     res.render("login", { error: null });
@@ -146,36 +140,7 @@ app.get("/hello/:name", function(req, res) {
 });
 */
 
-
-// raw data for tips table
-app.get("/Tips-formatted", async function(req, res){
-    var sql = 'select * from Tips_Table';
-    db.query(sql).then(results => {
-        console.log(results)
-        db.query(sql).then(results => {
-        res.render('Myfeed', {data:results});
-        });
-    });
-});
-
-
-
-// formatted data for tips table
-app.get("/Tips", async function(req, res){
-    var sql = 'select * from Tips_Table';
-    db.query(sql).then(results => {
-        console.log(results)
-        res.json(results);
-    });
-});
-
 //Routes for application will be defined here
-
-app.get("/game/:id", function async (req, res){
-    var Game_ID = req.params.id;
-    console.log(Game_ID);
-    res.send(Game_ID);
-});
 
 // sql = 'SELECT * FROM GAME';
 //     db.query(sql).then(results => {
@@ -220,31 +185,26 @@ app.post('/add-tip', async function(req, res){
 });
 
 
+//dynamic page for game
+app.get("/game/:id", async function(req, res){
+    var Game_ID = req.params.id;  
+    var sql = 'SELECT * FROM GAME WHERE Game_ID = ?';
+    var sql = 'SELECT * FROM POST WHERE Game_ID = ?';
+    db.query(sql, [Game_ID]).then(results => {
+        console.log(results)
+        res.render('gametip', {data:results});
+    });
+});
 
-//list tips and search through them.
 
-app.get("/", function(req, res){
+//Main page route
+app.get("/", async function(req, res){
     var sql = 'select * from POST';
     db.query(sql).then (results => {
         console.log(results)
         res.render('Explorer', {data:results}); 
     });
 });
-
-
-
-
-
-// need to change this to login/sign up page (route)
-//This page is so users can login/sign up
-app.get("/profiles", function (req, res){
-    var sql = 'SELECT * FROM USER';
-    db.query(sql).then (results => {
-        console.log(results)
-        res.render('Users', {data:results});
-    });
-});
-
 
 
 // Start server on port 3000
