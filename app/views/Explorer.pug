@@ -1,4 +1,4 @@
-extends layout
+extends layout  
 
 block content
   - console.log(data) // Debugging output
@@ -22,21 +22,3 @@ block content
                 a(href=`/game/${item.Game_ID}`)= item.Game_ID 
               else
                 span No Game ID
-=======
-          th created
-      tbody
-        each item in data
-          tr
-            td= item.Title || 'Unknown Title'
-            td= item.description || 'No description'
-            td= item.created || 'Unknown Date'
->>>>>>> Stashed changes
-=======
-          th created
-      tbody
-        each item in data
-          tr
-            td= item.Title || 'Unknown Title'
-            td= item.description || 'No description'
-            td= item.created || 'Unknown Date'
->>>>>>> Stashed changes
