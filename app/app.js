@@ -69,7 +69,6 @@ app.use(session({
 app.get("/MyFeed", async function(req, res) {
     try {
       let tips;
-  
       if (req.session.user) {
         console.log("Logged in as:", req.session.user);
         tips = await Post.getTipsByUser(req.session.user.User_ID);
@@ -167,8 +166,7 @@ app.post('/add-tip', async function(req, res){
             return res.status(401).send("You must be logged in to post tips.");
         }
 
-        const { title, tip } = req.body;
-        const gameID = 1; // Replace this later with form input (dropdown)
+        const { title, tip, gameID } = req.body; // <-- Get gameID from form
         const userID = req.session.user.User_ID;
 
         const sql = `
